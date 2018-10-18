@@ -1,0 +1,58 @@
+<%
+data = 
+[
+  %{ "name" => "enぺだーし", "age" => 49, "team" => "有限会社デライトシステムズ", "position" => "代表取締役、性能探求者" }, 
+  %{ "name" => "ざっきー", "age" => 45, "team" => "公立大学法人 北九州市立大学", "position" => "准教授、カーネルハッカー" }, 
+  %{ "name" => "つちろー", "age" => 34, "team" => "カラビナテクノロジー株式会社", "position" => "リードエンジニア、アプリマイスター" }, 
+  %{ "name" => "ゆじかわ", "age" => 30, "team" => "カラビナテクノロジー株式会社", "position" => "リードエンジニア、グロースハッカー" }, 
+  %{ "name" => "piacere", "age" => 43, "team" => "株式会社TechJIN", "position" => "CTO、福岡Elixirプログラマ、重力プログラマ、技術顧問" }
+]
+|> Enum.filter( fn(record) -> record["age"] >= 40 end)
+|> Enum.sort(fn(current,next) -> current["age"] < next["age"] end)
+%>
+<table border="1">
+	<%= for record <- data do %>
+	<tr>
+		<td><%= record["name"] %></td>
+		<td><%= record["age"] %></td>
+		<td><%= record["team"] %></td>
+		<td><%= record["position"] %></td>
+	</tr>
+	<% end %>
+</table>
+<div class="jumbotron">
+  <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
+  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+</div>
+
+<div class="row marketing">
+  <div class="col-lg-6">
+    <h4>Resources</h4>
+    <ul>
+      <li>
+        <a href="http://phoenixframework.org/docs/overview">Guides</a>
+      </li>
+      <li>
+        <a href="https://hexdocs.pm/phoenix">Docs</a>
+      </li>
+      <li>
+        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-lg-6">
+    <h4>Help</h4>
+    <ul>
+      <li>
+        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
+      </li>
+      <li>
+        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
+      </li>
+    </ul>
+  </div>
+</div>
