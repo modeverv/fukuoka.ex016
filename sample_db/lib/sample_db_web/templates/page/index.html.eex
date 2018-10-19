@@ -1,3 +1,18 @@
+<%
+result = DbMnesia.query("members")
+data = result |> Db.columns_rows
+%>
+<table border="1">
+<%= for record <- data do %>
+	<tr>
+		<td><%= record["name"] %></td>
+		<td><%= record["age"] %></td>
+		<td><%= record["team"] %></td>
+		<td><%= record["position"] %></td>
+	</tr>
+<% end %>
+</table>
+
 <div class="jumbotron">
   <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
   <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
