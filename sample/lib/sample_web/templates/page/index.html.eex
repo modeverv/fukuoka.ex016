@@ -10,6 +10,7 @@ data =
 |> Enum.filter( fn(record) -> record["age"] >= 40 end)
 |> Enum.sort(fn(current,next) -> current["age"] < next["age"] end)
 %>
+<h1>あああああ</h1>
 <table border="1">
 	<%= for record <- data do %>
 	<tr>
@@ -24,6 +25,13 @@ data =
   <h2><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h2>
   <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
 </div>
+<h1>あああああ</h1>
+<p>
+aaaa
+fsafdsefdsa
+fsadfdsafdsa
+fdsafdsafdsafs
+</p>
 
 <div class="row marketing">
   <div class="col-lg-6">
