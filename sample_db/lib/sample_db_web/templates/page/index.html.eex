@@ -1,14 +1,29 @@
 <%
 result = DbMnesia.query("members")
+# data = result |> Db.columns_rows
 data = result |> Db.columns_rows
+  |> Enum.map(fn (record) -> %{"name" => record["name"], "age" => record["age"]} end)
+data = Json.get("https://qiita.com", "/api/v2/items?query=elixir") |> Enum.filter(
+fn(r) -> r["created_at"] > "2018-10-14" end
+) |> Enum.map(
+fn(r) -> %{"title" => r["title"],"created_at" => r["created_at"] } end
+)
+# data = Json.get("https://qiita.com", "/api/v2/items?query=elixir")
+columns = result |> Db.columns |> Enum.filter(fn(c) -> c == "name" || c == "age" end)
+columns = ["id", "title", "created_at"]
+columns = ["title", "created_at"]
 %>
 <table border="1">
+<tr>
+	<%= for column <- columns do %>
+	<th><%= column %></th>
+	<% end %>
+</tr>
 <%= for record <- data do %>
-	<tr>
-		<td><%= record["name"] %></td>
-		<td><%= record["age"] %></td>
-		<td><%= record["team"] %></td>
-		<td><%= record["position"] %></td>
+<tr>
+	<%= for column <- columns do %>
+	<td><%= record[column] %></td>
+	<% end %>
 	</tr>
 <% end %>
 </table>
